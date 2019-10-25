@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         movies = new ArrayList<>();
 
         // Create the adapter
+        // we have data and layout. Adapter is responsible for bridging those together to present something to show to the user
         final MovieAdapter movieAdapter = new MovieAdapter(this, movies);
 
         // Set the adapter on the recycler view

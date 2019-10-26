@@ -2,6 +2,7 @@ package com.example.birajsilwal.flixster.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +81,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public void bind(final Movie movie) {
             tvTitle.setText(movie.getTitle());
             tVOverview.setText(movie.getOverview());
-            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+            String imageUrl;
+
+            // if phone is in landscape
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                // then imageUrl = back drop image
+                imageUrl = movie.getBackdropPath();
+            }else{
+                // else imageUrl = poster image
+                imageUrl = movie.getPosterPath();
+            }
+            Glide.with(context).load(imageUrl).into(ivPoster);
+
+
 
             // 1. Register click listener on the whole row
 
